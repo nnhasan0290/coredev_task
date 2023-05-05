@@ -12,7 +12,7 @@
   "SMTP_PORT": "",
   "SMTP_USER": "",
   "SMTP_PASSWORD": "",
-  "mongodbURL": "",
+  "mongodbURL": "mongodb+srv://nazmul:nzhnl0290@cluster0.2vxcedg.mongodb.net/?retryWrites=true&w=majority",
   "bkash": {
     "username": "sandboxTokenizedUser02",
     "password": "sandboxTokenizedUser02@12345",

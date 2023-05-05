@@ -98,7 +98,7 @@ export default class App {
   listen() {
     // Serve Front-end
     this.express.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '..', 'client/build/index.html'));
     });
 
     // Boot the server
