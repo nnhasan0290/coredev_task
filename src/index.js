@@ -18,7 +18,7 @@ The previous way will keep working but will not be served as endpoint
 
 (() => {
   // Check for clients directory as it is required by this framework
-  const statics = path.resolve(__dirname, '..', 'client');
+  const statics = path.resolve(__dirname, '../client/build');
   if (!fs.existsSync(statics)) {
     fs.mkdirSync(statics);
   }

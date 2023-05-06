@@ -52,15 +52,20 @@ export default class App {
     this.express.use(
       cors({
         origin: this.config.origin,
-        credentials: true
-      }));
+        credentials: true,
+      })
+    );
     this.express.use(morgan('common')); // Logger
     this.express.use(actuator({ infoGitMode: 'full' })); // Health Checker
     this.express.use(json()); // Parse JSON response
     this.express.use(urlencoded({ extended: false })); // Legacy URL encoding
     this.express.use(cookieParser()); // Parse cookies
     this.express.use(parse()); // Parse Form data as JSON
-    this.express.use(express.static(path.resolve(__dirname, '..', 'client'))); // REACT build files (Statics)
+    this.express.use(
+      express.static(
+        path.resolve(__dirname, '..', 'client/build')
+      )
+    ); // REACT build files (Statics)
     this.express.use('/api', this.router); // All the API routes
 
     if (this.config.useHTTP2) {
@@ -72,7 +77,7 @@ export default class App {
 
       this.options = {
         ...this.ssl,
-        allowHTTP1: true
+        allowHTTP1: true,
       };
 
       // Server
@@ -98,7 +103,7 @@ export default class App {
   listen() {
     // Serve Front-end
     this.express.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '..', 'client/build/index.html'));
+      res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
     });
 
     // Boot the server
@@ -122,7 +127,7 @@ export default class App {
       lyra: this.search,
       db: this.db,
       mail: this.mail,
-      config: this.config
+      config: this.config,
     });
   }
 
@@ -135,8 +140,8 @@ export default class App {
         lyra: this.search,
         db: this.db,
         mail: this.mail,
-        config: this.config
-      }
+        config: this.config,
+      },
     };
   }
 }

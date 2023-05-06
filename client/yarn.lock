@@ -7506,6 +7506,13 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-bkash@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-bkash/-/react-bkash-3.0.0.tgz#25d0b4baa603d3f1b8d57131a890dbbe918ce1f6"
+  integrity sha512-9hhQDN02P1I2RrXlgmzQDnoih0KmT9Ok481iLPjty7c6K7K9sUUnxkCETr02gR/GRPoEDDr4xyXVFw31t6sINQ==
+  dependencies:
+    react-dom "^18.2.0"
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
