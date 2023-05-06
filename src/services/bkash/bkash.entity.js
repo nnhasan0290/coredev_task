@@ -6,6 +6,8 @@ import fs from 'fs';
 import path from 'path';
 
 export const createPayment = ({ bkash }) => async (req, res) => {
+  console.log('working');
+  console.log(req.body);
   try {
     const createAgreement = await bkash.createAgreement({
       payerReference: req.body.phone,
@@ -19,6 +21,7 @@ export const createPayment = ({ bkash }) => async (req, res) => {
 };
 
 export const executePayment = ({ bkash, mail, config }) => async (req, res) => {
+  console.log('execute');
   let email = req.query.email;
   const execute = await bkash.executeAgreement();
   if (Number(execute.statusCode) !== 2054) {

@@ -33,18 +33,33 @@ export default function Order() {
       "https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js", // https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js
     amount: 1000,
     onCreatePayment: async (paymentRequest) => {
-      return {
-        paymentID: "string",
-        createTime: "string;",
-        orgLogo: "string;",
-        orgName: "string;",
-        transactionStatus: "string;",
-        amount: "string;",
-        currency: "string;",
-        intent: "string;",
-        merchantInvoiceNumber: "string;",
-      };
+      return await fetch("https://9000-nnhasan0290-coredevtask-vzag693wulu.ws-us96b.gitpod.io/api/bkash/createPayment", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          ...paymentRequest,
+          phone: '01521408381',
+          email: 'nazmulhasan0290@gmail.com',
+          totalPrice: '2'
+        }),
+      }).then((res) => res.json());
     },
+    // onCreatePayment: async (paymentRequest) => {
+    //   return {
+    //     paymentID: "string",
+    //     createTime: "string;",
+    //     orgLogo: "string;",
+    //     orgName: "string;",
+    //     transactionStatus: "string;",
+    //     amount: "string;",
+    //     currency: "string;",
+    //     intent: "string;",
+    //     merchantInvoiceNumber: "string;",
+    //   };
+    // },
     onExecutePayment: async (paymentID) => {
       // call your executePayment API here
       return await fetch("<your backend api>/execute/${paymentID}", {
@@ -54,6 +69,7 @@ export default function Order() {
       // it doesn't matter what you return here, any errors thrown here will be available on error return value of the useBkash hook
     },
   });
+  console.log(error)
 
   return (
     <div>
@@ -81,7 +97,7 @@ export default function Order() {
         </table>
         <p className="py-5 text-pColor">Shipping</p>
         <div className="pb-5 space-y-2 border-b border-opacity-5 border-border">
-          <div className="flex items-center justify-between text-pColor">
+          <div className="flex justify-between items-center text-pColor">
             <label className="flex items-center">
               <input
                 type="radio"
@@ -95,7 +111,7 @@ export default function Order() {
             </label>
             <p className="text-black">৳ 1.00tk </p>
           </div>
-          <div className="flex items-center justify-between text-pColor">
+          <div className="flex justify-between items-center text-pColor">
             <label className="flex items-center">
               <input
                 type="radio"

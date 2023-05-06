@@ -103,6 +103,7 @@ export default class App {
   listen() {
     // Serve Front-end
     this.express.get('*', (req, res) => {
+      console.log('works');
       res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
     });
 
