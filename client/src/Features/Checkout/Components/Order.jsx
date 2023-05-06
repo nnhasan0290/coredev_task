@@ -22,7 +22,7 @@ export default function Order() {
     setTotalPrice(total + 1);
   }, []);
 
-const { error, loading, triggerBkash } = useBkash({
+  const { error, loading, triggerBkash } = useBkash({
     onSuccess: (data) => {
       console.log(data); // this contains data from api response from onExecutePayment
     },
@@ -42,20 +42,18 @@ const { error, loading, triggerBkash } = useBkash({
         amount: "string;",
         currency: "string;",
         intent: "string;",
-        merchantInvoiceNumber: "string;"
+        merchantInvoiceNumber: "string;",
       };
     },
     onExecutePayment: async (paymentID) => {
       // call your executePayment API here
-      return
-      // return await fetch("<your backend api>/execute/${paymentID}", {
-      //   method: "POST"
-      // }).then((res) => res.json());
+      return await fetch("<your backend api>/execute/${paymentID}", {
+        method: "POST",
+      }).then((res) => res.json());
 
       // it doesn't matter what you return here, any errors thrown here will be available on error return value of the useBkash hook
-    }
+    },
   });
-
 
   return (
     <div>
@@ -83,7 +81,7 @@ const { error, loading, triggerBkash } = useBkash({
         </table>
         <p className="py-5 text-pColor">Shipping</p>
         <div className="pb-5 space-y-2 border-b border-opacity-5 border-border">
-          <div className="flex justify-between items-center text-pColor">
+          <div className="flex items-center justify-between text-pColor">
             <label className="flex items-center">
               <input
                 type="radio"
@@ -97,7 +95,7 @@ const { error, loading, triggerBkash } = useBkash({
             </label>
             <p className="text-black">৳ 1.00tk </p>
           </div>
-          <div className="flex justify-between items-center text-pColor">
+          <div className="flex items-center justify-between text-pColor">
             <label className="flex items-center">
               <input
                 type="radio"
@@ -118,9 +116,9 @@ const { error, loading, triggerBkash } = useBkash({
           </p>
         </div>
         {!loading && !error && (
-        <Btn onclick={triggerBkash}>Continue to Payment</Btn>
+
+        <Btn onClick={triggerBkash}>Continue to Payment</Btn>
         )}
-       
         {open ? <PaymentMd /> : ""}
       </div>
     </div>
